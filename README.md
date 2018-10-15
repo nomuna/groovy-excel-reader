@@ -10,10 +10,20 @@ Modified Goran's code to handle xlsx document types, and just return the string 
 Usage examples
 ==============
 
+## Fill a bean with data from rows
+
 ```groovy
 new ExcelBuilder("customers.xls").eachLine([labels:true]) {
   new Person(name:"$firstname $lastname",
     address:address, telephone:phone).save()
+}
+```
+
+## Accessing cells using indexes
+
+```groovy
+new ExcelBuilder("customers.xls").eachLine {
+  println "First column on row ${it.rowNum} = ${cell(0)}"
 }
 ```
 
