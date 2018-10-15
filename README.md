@@ -13,7 +13,7 @@ Usage examples
 ## Fill a bean with data from rows
 
 ```groovy
-new ExcelBuilder("customers.xls").eachLine([labels:true]) {
+new ExcelReader("customers.xls").eachLine([labels:true]) {
   new Person(name:"$firstname $lastname",
     address:address, telephone:phone).save()
 }
@@ -22,7 +22,7 @@ new ExcelBuilder("customers.xls").eachLine([labels:true]) {
 ## Accessing cells using indexes
 
 ```groovy
-new ExcelBuilder("customers.xls").eachLine {
+new ExcelReader("customers.xls").eachLine {
   println "First column on row ${it.rowNum} = ${cell(0)}"
 }
 ```
